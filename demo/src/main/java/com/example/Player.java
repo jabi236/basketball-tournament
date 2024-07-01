@@ -3,47 +3,52 @@ package com.example;
 import java.util.Random;
 
 public class Player {
-    private static int id;
-    private static String first;
-    private static String last;
-    private static double ppg;
-    private static int numGames;
+    private int id;
+    private String first;
+    private String last;
+    private double ppg;
+    private int numGames;
+    private int totPts;
 
     public Player(){
         id = 0;
         ppg = 0;
         numGames = 0;
+        totPts = 0;
         first = "";
         last = "";
     }
-    public static void setId(int newId){
+    public void setId(int newId){
         id = newId;
     }
-    public static void setPPG(float newPGG){
+    public void setPPG(double newPGG){
         ppg = newPGG;
     }
-    public static void setFirst(String fname){
+    public void setFirst(String fname){
         first = fname;
     }
-    public static void setLast(String lname){
+    public void setLast(String lname){
         last = lname;
     }
-    public static int getId(){return id;}
-    public static double getPPG(){return ppg;}
-    public static String setFirst(){return first;}
-    public static String getlast(){return last;}
+    public int getId(){return id;}
+    public double getPPG(){return ppg;}
+    public int getTotPts(){return totPts;}
+    public String getFirst(){return first;}
+    public String getLast(){return last;}
+    public int getNumGames(){return numGames;}
     // generate number of points player got in given game based on ppg and random devation
-    public static int getPoints(){
+    public int getPoints(){
         numGames++;
         int pts = 0;
 
         // get random number between min and max to be added as standard devation of ppg
-        int min = -5;
-        int max = 5;
+        int min = -3;
+        int max = 3;
         Random r = new Random();
         double std = r.nextDouble(max -min) + min;
 
         pts = (int)(ppg + std);
+        totPts = totPts + pts;
 
         if(pts < 0){
             pts = 0;
@@ -52,7 +57,7 @@ public class Player {
             ppg = pts;
         }
         else{
-            ppg = (ppg + pts / numGames);
+            ppg = (double)(totPts / numGames);
         }
         return pts;
     }
