@@ -45,12 +45,13 @@ public class Team extends Player{
     public int getRecord(){
         return wins - losses;
     }
-    public void print(){
+    public void printRoster(){
         System.out.println("========== " + name.toUpperCase() + " LINEUP ==========");
         for(int i = 0; i < numPlayers; i++){
             players[i].print();
         }
     }
-
-
+    public void print(){
+        System.out.println(name.toUpperCase());
+    }
 }
