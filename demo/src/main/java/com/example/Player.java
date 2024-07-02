@@ -4,8 +4,7 @@ import java.util.Random;
 
 public class Player {
     private int id;
-    private String first;
-    private String last;
+    private String name;
     private double ppg;
     private int numGames;
     private int totPts;
@@ -15,8 +14,7 @@ public class Player {
         ppg = 0;
         numGames = 0;
         totPts = 0;
-        first = "";
-        last = "";
+        name = "";
     }
     public void setId(int newId){
         id = newId;
@@ -24,17 +22,13 @@ public class Player {
     public void setPPG(double newPGG){
         ppg = newPGG;
     }
-    public void setFirst(String fname){
-        first = fname;
-    }
-    public void setLast(String lname){
-        last = lname;
+    public void setName(String newName){
+        name = newName;
     }
     public int getId(){return id;}
     public double getPPG(){return ppg;}
     public int getTotPts(){return totPts;}
-    public String getFirst(){return first;}
-    public String getLast(){return last;}
+    public String getName(){return name;}
     public int getNumGames(){return numGames;}
     // generate number of points player got in given game based on ppg and random devation
     public int getPoints(){
@@ -62,7 +56,7 @@ public class Player {
         return pts;
     }
     public void print(){
-        System.out.println(id + ". " + first + " " + last);
+        System.out.println(id + ". " + name);
     }
 
 }
