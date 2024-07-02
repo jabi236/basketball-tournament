@@ -61,5 +61,8 @@ public class Player {
         }
         return pts;
     }
+    public void print(){
+        System.out.println(id + ". " + first + " " + last);
+    }
 
 }
