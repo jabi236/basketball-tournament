@@ -5,7 +5,7 @@ public class Team extends Player{
     private String name;
     private int id;
     private int numPlayers;
-    private Player[] players = new Player[MAX_PLAYERS];
+    protected Player[] players;
     private int wins;
     private int losses;
 
@@ -15,6 +15,7 @@ public class Team extends Player{
         numPlayers = 0;
         wins = 0;
         losses = 0;
+        players = new Player[MAX_PLAYERS];
     }
     public void setName(String newName){
         name = newName;
