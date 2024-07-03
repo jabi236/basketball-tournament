@@ -1,0 +1,24 @@
+SEC
+1
+Kentucky Wildcats
+100
+Antonio Reeves
+20.2
+Rob Dillingham
+15.2
+Reed Sheppard
+12.5
+Tre Mitchell
+10.7
+D.J. Wagner
+9.9
+Justin Edwards
+8.8
+Adou Thiero
+7.2
+Zvonimir Ivisic
+5.5
+Aaron Bradshaw
+4.9
+Ugonna Onyenso
+3.6
