@@ -72,6 +72,33 @@ public class Conference extends Team{
             }
         }
     }
+    public Team match(Team t1, Team t2){
+        int score1 = t1.getScore();
+        int score2 = t2.getScore();
+        String ot = "";
+        Team winner = new Team();
+
+        while(score1 == score2){
+            score1 = score1 + (t1.getScore()/4);
+            score2 = score2 + (t2.getScore()/4);
+            ot = "/OT";
+        }
+        if(score1 > score2){
+            winner = t1;
+            t1.addWins();
+            t2.addLosses();
+        }
+        else{
+            winner = t2;
+            t2.addWins();
+            t1.addLosses();
+        }
+        System.out.println("FINAL" + ot + ":");
+        System.out.println(t1.getName() + " " + score1 + " | " + t2.getName() + " " + score2);
+        System.out.println(winner.getName() + " Wins!");
+        return winner;
+    }
+
     public void printRoster(){
         System.out.println("============= " + name.toUpperCase() + " CONFERENCE =============");
         for(int i = 0; i < numTeams; i++){
