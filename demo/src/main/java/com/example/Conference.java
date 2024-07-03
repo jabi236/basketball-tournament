@@ -1,8 +1,9 @@
 package com.example;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class Conference extends Team{
     private static final int MAX_TEAMS = 16;
@@ -28,53 +29,57 @@ public class Conference extends Team{
         return teams[idx];
     }
 
-    public void read(){
+    public void read()throws IOException {
 
         String[] conferences = {"sec.txt"};
-        String filepath;
+        String filename;
         for(int i = 0; i < conferences.length; i++){
-            //TODO: Change this to actually be able to read
-            filepath = conferences[i];
+            filename = conferences[i];
+            ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+            InputStream is = classloader.getResourceAsStream(filename);
             try{
-                File myObj = new File(filepath);
-                Scanner myReader = new Scanner(myObj);
-                name = myReader.nextLine();
-                numTeams = myReader.nextInt();
+                BufferedReader myReader = new BufferedReader(new InputStreamReader(is));
+                name = myReader.readLine();
+                numTeams = Integer.parseInt(myReader.readLine());
                 String teamName;
                 int teamId;
                 int playerId;
                 String playerName;
-                int playerPPG;
+                double playerPPG;
                 
                 for(int j = 0; j < numTeams; j++){
-                    teamName = myReader.nextLine();
-                    teamId = myReader.nextInt();
-                    teams[j].setName(teamName);
-                    teams[j].setId(teamId);
+                    teamName = myReader.readLine();
+                    teamId = Integer.parseInt(myReader.readLine());
+                    Team t = new Team();
+                    t.setName(teamName);
+                    t.setId(teamId);
+                    teams[j] = t;
                     for(int k = 0; k < 10; k++){
                         playerId = teamId + k + 1;
-                        playerName = myReader.nextLine();
-                        playerPPG = myReader.nextInt();
-                        teams[j].players[k].setId(playerId);
-                        teams[j].players[k].setName(playerName);
-                        teams[j].players[k].setPPG(playerPPG);
+                        playerName = myReader.readLine();
+                        playerPPG = Double.parseDouble(myReader.readLine());
+                        Player p = new Player();
+                        p.setId(playerId);
+                        p.setName(playerName);
+                        p.setPPG(playerPPG);
+                        teams[j].players[k] = p;
+                        teams[j].setNumPlayers(k+1);
+                        
                     }
                 }
-                myReader.close();
-            } catch(FileNotFoundException e){
-                System.out.println("Unable to open " + filepath);
-                e.printStackTrace();
+            } finally {
+                try { is.close(); } catch (Throwable ignore) {}
             }
         }
     }
     public void printRoster(){
-        System.out.println("========== " + name.toUpperCase() + " CONFERENCE ==========");
+        System.out.println("============= " + name.toUpperCase() + " CONFERENCE =============");
         for(int i = 0; i < numTeams; i++){
             teams[i].printRoster();
         }
     }
     public void print(){
-        System.out.println("========== " + name.toUpperCase() + " CONFERENCE ==========");
+        System.out.println("============= " + name.toUpperCase() + " CONFERENCE =============");
         for(int i = 0; i < numTeams; i++){
             teams[i].print();
         }
