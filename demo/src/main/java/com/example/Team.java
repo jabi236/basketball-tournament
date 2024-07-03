@@ -26,11 +26,11 @@ public class Team extends Player{
     public void setNumPlayers(int newNum){
         numPlayers = newNum;
     }
-    public void setWins(int newWins){
-        wins = newWins;
+    public void addWins(){
+        wins = wins + 1;
     }
-    public void setLosses(int newLosses){
-        losses = newLosses;
+    public void addLosses(){
+        losses = losses +1;
     }
 
     public String getName(){return name;}
@@ -48,6 +48,13 @@ public class Team extends Player{
     public int getRecord(){
         return wins - losses;
     }
+    public int getScore(){
+        int totScore = 0;
+        for(int i = 0; i < numPlayers; i++){
+            totScore = totScore + players[i].getPoints();
+        }
+        return totScore;
+    }
     public void printRoster(){
         System.out.println(name.toUpperCase() + " LINEUP:");
         for(int i = 0; i < numPlayers; i++){
@@ -55,6 +62,6 @@ public class Team extends Player{
         }
     }
     public void print(){
-        System.out.println(name.toUpperCase());
+        System.out.println(name.toUpperCase() + " " + wins + "-" + losses);
     }
 }
