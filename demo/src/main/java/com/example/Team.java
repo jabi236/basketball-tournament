@@ -23,6 +23,9 @@ public class Team extends Player{
     public void setId(int newId){
         id = newId;
     }
+    public void setNumPlayers(int newNum){
+        numPlayers = newNum;
+    }
     public void setWins(int newWins){
         wins = newWins;
     }
@@ -46,7 +49,7 @@ public class Team extends Player{
         return wins - losses;
     }
     public void printRoster(){
-        System.out.println("========== " + name.toUpperCase() + " LINEUP ==========");
+        System.out.println(name.toUpperCase() + " LINEUP:");
         for(int i = 0; i < numPlayers; i++){
             players[i].print();
         }
