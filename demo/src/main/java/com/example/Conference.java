@@ -10,6 +10,7 @@ public class Conference extends Team{
     private String name;
     private int numTeams;
     private Team[] teams;
+    private Team[] ranks;
 
     public Conference(){
         numTeams = 0;
@@ -28,9 +29,21 @@ public class Conference extends Team{
         }
         return teams[idx];
     }
+    public Team searchTeam(int searchId){
+        if(searchId < 0){
+            Team emptyTeam = new Team();
+            return emptyTeam;
+        }
+        for(int i = 0; i < numTeams; i++){
+            if(teams[i].getId() == searchId){
+                return teams[i];
+            }
+        }
+        Team emptyTeam = new Team();
+        return emptyTeam;
+    }
 
     public void read()throws IOException {
-
         String[] conferences = {"sec.txt"};
         String filename;
         for(int i = 0; i < conferences.length; i++){
@@ -64,7 +77,6 @@ public class Conference extends Team{
                         p.setPPG(playerPPG);
                         teams[j].players[k] = p;
                         teams[j].setNumPlayers(k+1);
-                        
                     }
                 }
             } finally {
@@ -97,6 +109,17 @@ public class Conference extends Team{
         System.out.println(t1.getName() + " " + score1 + " | " + t2.getName() + " " + score2);
         System.out.println(winner.getName() + " Wins!");
         return winner;
+    }
+    public void rankedSort(){
+        for(int i = 0; i < numTeams; i++){
+            for(int j = 1; j < numTeams - i; j++){
+                if(teams[j-1].getRecord() < teams[j].getRecord()){
+                    Team temp = teams[j-1];
+                    teams[j-1] = teams[j];
+                    teams[j] = temp; 
+                }
+            }
+        }
     }
 
     public void printRoster(){
