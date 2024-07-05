@@ -1,0 +1,179 @@
+SEC
+3
+8
+Tennessee Volunteers
+100
+Dalton Knecht
+21.7
+Zakai Zeigler
+11.8
+Jonas Aidoo
+11.4
+Josiah-Jordan James
+8.4
+Jordan Gainey
+6.8
+Santiago Vescovi
+6.3
+Tobe Awaka
+5.1
+Jahmai Mashack
+4.5
+D.J. Jefferson
+3.0
+Freddie Dilione V
+1.7
+Auburn Tigers
+200
+Johni Broome
+16.5
+Jaylin Williams
+12.4
+Chad Baker-Mazara
+10.0
+Denver Jones
+9.1
+Aden Holloway
+7.3
+K.D. Johnson
+7.1
+Tre Donaldson
+6.7
+Dylan Cardwell
+5.3
+Chaney Johnson
+4.7
+Chris Moore
+2.5
+South Carolina Gamecocks
+300
+Meechie Johnson
+14.1
+B.J. Mack
+13.6
+Collin Murray-Boyles
+10.4
+Ta'Lon Cooper
+9.9
+Myles Stute
+8.3
+Jacobi Wright
+5.9
+Zachary Davis
+5.9
+Josh Gray
+3.2
+Benjamin Bosmans-Verdonk
+2.5
+Morris Ugusuk
+2.2
+Kentucky Wildcats
+400
+Antonio Reeves
+20.2
+Rob Dillingham
+15.2
+Reed Sheppard
+12.5
+Tre Mitchell
+10.7
+D.J. Wagner
+9.9
+Justin Edwards
+8.8
+Adou Thiero
+7.2
+Zvonimir Ivisic
+5.5
+Aaron Bradshaw
+4.9
+Ugonna Onyenso
+3.6
+Alabama Crimson Tide
+500
+Mark Sears
+21.5
+Aaron Estrada
+13.4
+Grant Nelson
+11.9
+Rylan Griffen
+11.2
+Latrell Wrightsell Jr.
+8.9
+Nick Pringle
+6.8
+Sam Walters
+5.4
+Jarin Stevenson
+5.3
+Davin Cosby Jr.
+3.6
+Mohamed Wague
+3.1
+Florida Gators
+600
+Walter Clayton Jr.
+17.6
+Zyon Pullin
+15.5
+Tyrese Samuel
+13.9
+Will Richard
+11.4
+Riley Kugel
+9.2
+Alex Condon
+7.7
+Micah Handlogten
+5.3
+Thomas Haugh
+3.9
+Denzel Aberdeen
+3.3
+Julian Rishwain
+1.6
+Texas A&M Aggies
+700
+Wade Taylor IV
+19.1
+Tyrece Radford
+16.5
+Henry Coleman III
+8.8
+Solomon Washington
+7.4
+Manny Obaseki
+7.0
+Jace Carter
+6.9
+Andersson Garcia
+6.0
+Hayden Hefner
+5.0
+Eli Lawrence
+2.1
+Bryce Lindsay
+1.8
+LSU Tigers
+800
+Jalen Cook
+15.6
+Jordan Wright
+15.1
+Will Baker
+11.0
+Tyrell Ward
+9.1
+Jalen Reed
+7.9
+Mike Williams III
+7.2
+Trae Hannibal
+7.0
+Derek Fountain
+5.3
+Carlos Stewart
+4.7
+Daimion Collins
+4.3
