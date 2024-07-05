@@ -1,7 +1,7 @@
 package com.example;
 
 public class Conference extends Team{
-    private static final int MAX_TEAMS = 16;
+    protected static final int MAX_TEAMS = 8;
     private String name;
     private int numTeams;
     protected Team[] teams;
@@ -50,9 +50,13 @@ public class Conference extends Team{
                 if(teams[j-1].getRecord() < teams[j].getRecord()){
                     Team temp = teams[j-1];
                     teams[j-1] = teams[j];
-                    teams[j] = temp; 
+                    teams[j] = temp;
                 }
             }
+        }
+        for(int i = 0; i < numTeams; i++){
+            teams[i].setRank_in_conf(i+1);
+            teams[i].setTPower((1 + (0.1 * (10 - confRank))*(teams[i].getRecord() + (numTeams - teams[i].getRank_in_conf()) + teams[i].getTotPPG())));
         }
     }
 
