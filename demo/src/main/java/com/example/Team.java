@@ -8,7 +8,6 @@ public class Team extends Player{
     protected Player[] players;
     private int wins;
     private int losses;
-
     public Team(){
         name = "";
         id = 0;
@@ -32,7 +31,6 @@ public class Team extends Player{
     public void addLosses(){
         losses = losses +1;
     }
-
     public String getName(){return name;}
     public int getId(){return id;}
     public int getWins(){return wins;}
