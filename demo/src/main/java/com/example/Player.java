@@ -8,7 +8,6 @@ public class Player {
     private double ppg;
     private int numGames;
     private int totPts;
-
     public Player(){
         id = 0;
         ppg = 0;
@@ -34,7 +33,6 @@ public class Player {
     public int getPoints(){
         numGames++;
         int pts = 0;
-
         // get random number between min and max to be added as standard devation of ppg
         int min = -3;
         int max = 3;
