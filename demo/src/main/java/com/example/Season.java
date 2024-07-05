@@ -13,7 +13,7 @@ public class Season extends Conference {
     private int numConfs;
     private int numGames;
     private Conference[] confs;
-    private Team[] ranked;
+    protected Team[] ranked;
     private int[][] schedule;
     public Season(){
         confs = new Conference[MAX_CONFERENES];
