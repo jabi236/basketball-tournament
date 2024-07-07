@@ -4,11 +4,13 @@ public class Conference extends Team{
     protected static final int MAX_TEAMS = 8;
     private String name;
     private int numTeams;
+    private int numGames;
     protected Team[] teams;
     private int confRank;
     public Conference(){
         numTeams = 0;
         confRank = 0;
+        numGames = 0;
         name = "";
         teams = new Team[MAX_TEAMS];
     }
@@ -21,8 +23,12 @@ public class Conference extends Team{
     public void setNumTeams(int newNum){
         numTeams = newNum;
     }
+    public void setNumGames(int newNum){
+        numGames = newNum;
+    }
     public String getName(){return name;}
     public int getNumTeams(){return numTeams;}
+    public int getNumGames(){return numGames;}
     public int getConfRank(){return confRank;}
     public Team getTeam(int idx){
         if(idx < 0 || idx > MAX_TEAMS){
