@@ -11,7 +11,7 @@ public class Season extends Conference {
     static final int MAX_GAMES = 16;
     static final int TOP_25 = 25;
     private int numConfs;
-    private int numGames;
+    private int totGames;
     private Conference[] confs;
     protected Team[] ranked;
     private int[][] schedule;
@@ -20,16 +20,16 @@ public class Season extends Conference {
         ranked = new Team[TOP_25];
         schedule = new int[MAX_GAMES*MAX_CONFERENES*MAX_TEAMS][MAX_TEAMS_MATCH];
         numConfs = 0;
-        numGames = 0;
+        totGames = 0;
     }
     public void setNumConfs(int newNum){
         numConfs = newNum;
     }
-    public void setNumGames(int newNum){
-        numGames = newNum;
+    public void setTotGames(int newNum){
+        totGames = newNum;
     }
     public int getNumConfs(){return numConfs;}
-    public int getNumGames(){return numGames;}
+    public int getTotGames(){return totGames;}
     public Conference getConference(int idx){
         if(idx < 0 || idx > MAX_CONFERENES){
             Conference emptyConference = new Conference();
@@ -50,25 +50,30 @@ public class Season extends Conference {
         Conference emptyConference = new Conference();
         return emptyConference;
     }
+    // TODO: Change to make menu sorted by week. No same team twice in the same week
     public void generateScedule(){
         for(int i=0; i < numConfs; i++){
+            int confGames = 0;
             for(int j=0; j < confs[i].getNumTeams(); j++){
                 for(int k=j+1; k < confs[i].getNumTeams(); k++){
                     // set 2d array of two team ids. Home, away
-                    schedule[numGames][0] = confs[i].teams[j].getId();
-                    schedule[numGames][1] = confs[i].teams[k].getId();
-                    numGames++;
+                    schedule[totGames][0] = confs[i].teams[j].getId();
+                    schedule[totGames][1] = confs[i].teams[k].getId();
+                    totGames++;
+                    confGames++;
                 }  
             }
             // play teams again, but swithc home and away
             for(int j=0; j < confs[i].getNumTeams(); j++){
                 for(int k=j+1; k < confs[i].getNumTeams(); k++){
                     // set 2d array of two team ids. Home, away
-                    schedule[numGames][0] = confs[i].teams[k].getId();
-                    schedule[numGames][1] = confs[i].teams[j].getId();
-                    numGames++;
+                    schedule[totGames][0] = confs[i].teams[k].getId();
+                    schedule[totGames][1] = confs[i].teams[j].getId();
+                    totGames++;
+                    confGames++;
                 }  
             }
+            confs[i].setNumGames(confGames);
         }
     }
     public Team game(Team t1, Team t2){
@@ -130,16 +135,17 @@ public class Season extends Conference {
         }
     }
     public void run() throws IOException{
+        read();
+        generateScedule();
+        //printSchedule();
         for(int i = 0; i < numConfs; i++){
-            read();
-            generateScedule();
-            //printSchedule();
             for(int j = 0; j < numConfs; j++){
-                confs[i].print();
+                confs[j].print();
                 //confs[i].printRoster();
             }
-            for(int j = 0; j < numGames; j++){
-                game(confs[i].searchTeam(schedule[j][0]), confs[i].searchTeam(schedule[j][1]));
+            for(int j = 0; j < confs[i].getNumGames(); j++){
+                // 
+                game(confs[i].searchTeam(schedule[(i*confs[i].getNumGames())+j][0]), confs[i].searchTeam(schedule[(i*confs[i].getNumGames())+j][1]));
             }
             confs[i].rankedSort();
         }
@@ -148,9 +154,9 @@ public class Season extends Conference {
         printTop25();
     }
     public void read() throws NumberFormatException, IOException{
-        String[] conferences = {"sec.txt"};
+        String[] conferences = {"sec.txt","big12.txt","big10.txt","acc.txt","bigeast.txt","pac12.txt","mountaineast.txt","atlantic10.txt","americanathletic.txt","missourivalley.txt"};
         String filename;
-        for(int i = 0; i < conferences.length; i++){
+        for(int i = 0; i < numConfs; i++){
             filename = conferences[i];
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             InputStream is = classloader.getResourceAsStream(filename);
@@ -212,7 +218,7 @@ public class Season extends Conference {
         System.out.println("=================== SCHEDULE ===================");
         for(int i = 0; i < numConfs; i++){
             System.out.println("========== " + confs[i].getName() + " ==========");
-            for(int j = 0; j < numGames; j++){
+            for(int j = 0; j < totGames; j++){
                 Team t1 = confs[i].searchTeam(schedule[j][0]);
                 Team t2 = confs[i].searchTeam(schedule[j][1]);
                 System.out.println(t1.getName() + " | " + t2.getName());
@@ -222,7 +228,14 @@ public class Season extends Conference {
     public void printTop25(){
         //TODO: change 8 to TOP_25 when enough teams
         System.out.println("==================== TOP 25 ===================");
-        for(int i = 0; i < 8; i++){
+        int nTeams = 0;
+        for(int i = 0; i < numConfs; i++){
+            nTeams = nTeams + confs[i].getNumTeams();
+        }
+        if(nTeams > 25){
+            nTeams = 25;
+        }
+        for(int i = 0; i < nTeams; i++){
             ranked[i].print();
         }
     }
