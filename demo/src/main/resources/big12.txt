@@ -1,0 +1,179 @@
+BIG 12
+1
+8
+Houston Cougars
+100
+L.J. Cryer
+15.5
+Jamal Shead
+12.9
+Emanuel Sharp
+12.6
+J'Wan Roberts
+9.5
+Damian Dunn
+6.4
+Ja'Vier Francis
+6.0
+Terrance Arceneaux
+5.5
+Mylik Wilson
+4.4
+Joseph Tugler
+3.8
+Ramon Walker Jr.
+2.0
+Iowa State Cyclones
+200
+Keshon Gilbert
+13.7
+Tamin Lipsey
+12.4
+Curtis Jones
+11.0
+Milan Momcilovic
+10.9
+Tre King
+9.0
+Robert Jones
+7.7
+Hason Ward
+6.0
+Jackson Paveletzke
+3.4
+Omaha Biliew
+2.4
+Demarion Watson
+1.9
+Baylor Bears
+300
+Ja'Kobe Walter
+14.5
+RayJ Dennis
+13.6
+Jalen Bridges
+12.2
+Langston Love
+11.0
+Yves Missi
+10.7
+Jayden Nunn
+10.5
+Josh Ojianwuna
+4.9
+Dantwan Grimes
+4.7
+Caleb Lohner
+2.4
+Miro Little
+1.7
+Texas Tech Red Raiders
+400
+Pop Isaacs
+15.8
+Joe Toussaint
+12.2
+Darrion Williams
+11.4
+Chance McMillian
+10.8
+Devan Cambridge
+10.5
+Warren Washington
+9.7
+Kerwin Walton
+8.5
+Robert Jennings
+4.4
+KyeRon Lindsay
+2.7
+Eemeli Yalaho
+2.5
+BYU Cougars
+500
+Jaxson Robinson
+14.2
+Fousseyni Traore
+10.9
+Trevin Knell
+10.6
+Spencer Johnson
+10.3
+Richie Saunders
+9.6
+Noah Waterman
+9.5
+Dallin Hall
+9.0
+Aly Khalifa
+5.7
+Dawson Baker
+5.0
+Atiki Ally Atiki
+4.0
+Kansas Jayhawks
+600
+Kevin McCullar Jr.
+18.3
+Hunter Dickinson
+17.9
+K.J. Adams Jr.
+12.6
+Johnny Furphy
+9.0
+Dajuan Harris Jr.
+8.5
+Nicolas Timberlake
+5.2
+Elmarko Jackson
+4.3
+Parker Braun
+2.2
+Jamari McDowell
+1.8
+Michael Jankovich
+1.6
+Texas Longhorns
+700
+Max Abmas
+16.8
+Dylan Disu
+15.5
+Tyrese Hunter
+11.1
+Dillon Mitchell
+9.6
+Kadin Shedrick
+7.7
+Chendall Weaver
+6.2
+Ithiel Horton
+5.9
+Brock Cunningham
+4.4
+Ze'Rik Onyema
+3.3
+Chris Johnson
+1.1
+TCU Horned Frogs
+800
+Emanuel Miller
+15.8
+Jameer Nelson Jr.
+11.2
+Micah Peavy
+10.9
+JaKobe Coles
+10.0
+Trevian Tennyson
+8.4
+Avery Anderson III
+7.8
+Chuck O'Bannon Jr.
+5.5
+Ernest Udeh Jr.
+4.3
+Xavier Cork
+4.2
+Essam Mostafa
+2.8

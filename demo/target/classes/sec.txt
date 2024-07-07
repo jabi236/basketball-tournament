@@ -2,7 +2,7 @@ SEC
 3
 8
 Tennessee Volunteers
-100
+2100
 Dalton Knecht
 21.7
 Zakai Zeigler
@@ -24,7 +24,7 @@ D.J. Jefferson
 Freddie Dilione V
 1.7
 Auburn Tigers
-200
+2200
 Johni Broome
 16.5
 Jaylin Williams
@@ -46,7 +46,7 @@ Chaney Johnson
 Chris Moore
 2.5
 South Carolina Gamecocks
-300
+2300
 Meechie Johnson
 14.1
 B.J. Mack
@@ -68,7 +68,7 @@ Benjamin Bosmans-Verdonk
 Morris Ugusuk
 2.2
 Kentucky Wildcats
-400
+2400
 Antonio Reeves
 20.2
 Rob Dillingham
@@ -90,7 +90,7 @@ Aaron Bradshaw
 Ugonna Onyenso
 3.6
 Alabama Crimson Tide
-500
+2500
 Mark Sears
 21.5
 Aaron Estrada
@@ -112,7 +112,7 @@ Davin Cosby Jr.
 Mohamed Wague
 3.1
 Florida Gators
-600
+2600
 Walter Clayton Jr.
 17.6
 Zyon Pullin
@@ -134,7 +134,7 @@ Denzel Aberdeen
 Julian Rishwain
 1.6
 Texas A&M Aggies
-700
+2700
 Wade Taylor IV
 19.1
 Tyrece Radford
@@ -156,7 +156,7 @@ Eli Lawrence
 Bryce Lindsay
 1.8
 LSU Tigers
-800
+2800
 Jalen Cook
 15.6
 Jordan Wright
