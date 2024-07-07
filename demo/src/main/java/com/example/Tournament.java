@@ -20,10 +20,13 @@ public class Tournament extends Season {
             numEntries++;
         }
     }
-    public void start(){
+    public void createBracket(){
 
     }
     public void printBracket(){
+
+    }
+    public void start(){
 
     }
     // Might delete
