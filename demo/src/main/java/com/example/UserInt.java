@@ -12,9 +12,8 @@ public class UserInt extends Menu{
         Season s = new Season();
         int numConfs = 1;
         s.setNumConfs(numConfs);
-        s.run();
+        s.playSeason();
         Tournament t = new Tournament();
-        t.getEntries(s);
-        t.printEntries();
+        t.playTournamnet(8, s);
     }
 }
