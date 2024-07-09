@@ -8,6 +8,11 @@ public class Player {
     private double ppg;
     private int numGames;
     private int totPts;
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: constructor
+    // Date: 7/1/24
+    // Description: initializes the objects (data members) used by the class
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Player(){
         id = 0;
         ppg = 0;
@@ -15,6 +20,11 @@ public class Player {
         totPts = 0;
         name = "";
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Functions: Sets
+    // Date: 7/1/24
+    // Description: set attributes with new values
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void setId(int newId){
         id = newId;
     }
@@ -24,12 +34,21 @@ public class Player {
     public void setName(String newName){
         name = newName;
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Functions: Gets
+    // Date: 7/1/24
+    // Description: return attributes value
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public int getId(){return id;}
     public double getPPG(){return ppg;}
     public int getTotPts(){return totPts;}
     public String getName(){return name;}
     public int getNumGames(){return numGames;}
-    // generate number of points player got in given game based on ppg and random devation
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: getPoints
+    // Date: 7/1/24
+    // Description: generate number of points player got in given game based on ppg and random devation
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public int getPoints(){
         numGames++;
         int pts = 0;
@@ -53,8 +72,12 @@ public class Player {
         }
         return pts;
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print
+    // Date: 7/1/24
+    // Description: print player object's id and name
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void print(){
         System.out.println(id + ". " + name);
     }
-
 }
