@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.concurrent.TimeUnit;
+
 public class Tournament extends Season {
     private final int MAX_TOURNAMENT_TEAMS = 64;
     private final int MAX_ROUND_ONE_GAMES = 32;
@@ -60,9 +62,9 @@ public class Tournament extends Season {
         bracket = updatedBracket;
     }
     
-    public void printBracket(int numGames){
+    public void printBracket(int numGames)throws InterruptedException{
         System.out.println();
-        System.out.println("OFFICAL BRACKET");
+        System.out.println("========== OFFICAL BRACKET ==========");
         if(numGames == 1){
             System.out.println("CHAMPIONSHIP GAME");
         }
@@ -77,8 +79,10 @@ public class Tournament extends Season {
             System.out.println("-------------------------------------");
             System.out.println();
         }
+        //TimeUnit.SECONDS.sleep(5);
     }
-    public void round(int numGames, Season s){
+
+    public void round(int numGames, Season s) throws InterruptedException{
         Team[] winners = new Team[numGames];
 
         for(int i = 0; i < numGames; i++){
@@ -86,9 +90,9 @@ public class Tournament extends Season {
         }
 
         numGames = numGames/2;
-        updateBracket(numGames,winners);
-        printBracket(numGames);
-        if(numGames % 2 == 0){
+        if(numGames != 0){
+            updateBracket(numGames, winners);
+            printBracket(numGames);
             round(numGames, s);
         }
         else{
@@ -97,7 +101,7 @@ public class Tournament extends Season {
         }
     }
     
-    public void playTournamnet(int numTeams, Season s){
+    public void playTournamnet(int numTeams, Season s) throws InterruptedException{
         getEntries(s);
         printEntries();
         int numGames = 0;
