@@ -9,6 +9,7 @@ public class Menu {
     private String errorMsg;
     private String title;
     private int numOpts;
+
     public Menu(){
         errorMsg = "";
         title = "";
@@ -16,6 +17,7 @@ public class Menu {
         validOptions = new char[MAX_OPTIONS];
         optDesc = new String[MAX_OPTIONS];
     }
+
     public void setTitle(String newTitle){
         title = newTitle;
     }
@@ -23,6 +25,7 @@ public class Menu {
     public void setErrorMsg(String newMsg){
         errorMsg = newMsg;
     }
+    
     public void addOption(char opt, String desc){
         if(numOpts < MAX_OPTIONS){
             validOptions[numOpts] = opt;
@@ -34,6 +37,7 @@ public class Menu {
             return;
         }
     }
+
     public char doMenu(){
         String optionInput;
         char option;
@@ -44,14 +48,15 @@ public class Menu {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Enter an option: ");
         optionInput = myObj.nextLine();
-        optionInput.toUpperCase();
-        option = (optionInput.charAt(0));
+        String optionUpper = optionInput.toUpperCase();
+        option = (optionUpper.charAt(0));
         while(!validOption(option)){
             System.out.println(errorMsg);
             option = doMenu();
         }
         return option;
     }
+
     public Boolean validOption(char opt){
         for(int i = 0; i < numOpts; i++){
             if(validOptions[i] == opt){
