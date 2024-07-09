@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.concurrent.TimeUnit;
 
 public class Season extends Conference {
     static final int MAX_CONFERENES = 10;
@@ -14,30 +15,47 @@ public class Season extends Conference {
     private int totGames;
     private Conference[] confs;
     protected Team[] ranked;
-    private int[][] schedule;
+    private Team[][] schedule;
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: constructor
+    // Date: 7/3/24
+    // Description: initializes the objects (data members) used by the class
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Season(){
         confs = new Conference[MAX_CONFERENES];
         ranked = new Team[TOP_25];
-        schedule = new int[MAX_GAMES*MAX_CONFERENES*MAX_TEAMS][MAX_TEAMS_MATCH];
+        schedule = new Team[MAX_GAMES*MAX_CONFERENES*MAX_TEAMS][MAX_TEAMS_MATCH];
         numConfs = 0;
         totGames = 0;
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Functions: sets
+    // Date: 7/3/24
+    // Description: set attributes with new values
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void setNumConfs(int newNum){
         numConfs = newNum;
     }
     public void setTotGames(int newNum){
         totGames = newNum;
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Functions: gets
+    // Date: 7/3/24
+    // Description: return attributes value
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public int getNumConfs(){return numConfs;}
     public int getTotGames(){return totGames;}
-    public Conference getConference(int idx){
+
+    public Conference searchConference_byIndex(int idx){
         if(idx < 0 || idx > MAX_CONFERENES){
             Conference emptyConference = new Conference();
             return emptyConference;
         }
         return confs[idx];
     }
-    public Conference searchConference(int searchId){
+
+    public Conference searchConference_byId(int searchId){
         if(searchId < 0){
             Conference emptyConference = new Conference();
             return emptyConference;
@@ -50,15 +68,26 @@ public class Season extends Conference {
         Conference emptyConference = new Conference();
         return emptyConference;
     }
+
+    public void sortSchedule(){
+        for(int i = 0; i < numConfs; i++){
+            for(int j = 0; j< confs[i].getNumGames(); j++){
+                for(int k = 0; k < confs[i].getNumTeams(); k++){
+
+                }
+            }
+        }
+    }
+
     // TODO: Change to make menu sorted by week. No same team twice in the same week
-    public void generateScedule(){
+    public void createSchedule(){
         for(int i=0; i < numConfs; i++){
             int confGames = 0;
             for(int j=0; j < confs[i].getNumTeams(); j++){
                 for(int k=j+1; k < confs[i].getNumTeams(); k++){
                     // set 2d array of two team ids. Home, away
-                    schedule[totGames][0] = confs[i].teams[j].getId();
-                    schedule[totGames][1] = confs[i].teams[k].getId();
+                    schedule[totGames][0] = confs[i].teams[j];
+                    schedule[totGames][1] = confs[i].teams[k];
                     totGames++;
                     confGames++;
                 }  
@@ -67,8 +96,8 @@ public class Season extends Conference {
             for(int j=0; j < confs[i].getNumTeams(); j++){
                 for(int k=j+1; k < confs[i].getNumTeams(); k++){
                     // set 2d array of two team ids. Home, away
-                    schedule[totGames][0] = confs[i].teams[k].getId();
-                    schedule[totGames][1] = confs[i].teams[j].getId();
+                    schedule[totGames][0] = confs[i].teams[k];
+                    schedule[totGames][1] = confs[i].teams[j];
                     totGames++;
                     confGames++;
                 }  
@@ -76,7 +105,8 @@ public class Season extends Conference {
             confs[i].setNumGames(confGames);
         }
     }
-    public Team game(Team t1, Team t2){
+
+    public Team match(Team t1, Team t2) throws InterruptedException{
         int score1 = t1.getScore();
         int score2 = t2.getScore();
         String ot = "";
@@ -102,6 +132,7 @@ public class Season extends Conference {
         System.out.println(winner.getName() + " Wins!");
         return winner;
     }
+
     public void setRanks(){
         int totTeams = 0;
         //get teams
@@ -134,9 +165,10 @@ public class Season extends Conference {
             }
         }
     }
-    public void run() throws IOException{
+
+    public void playSeason() throws IOException, InterruptedException{
         read();
-        generateScedule();
+        createSchedule();
         //printSchedule();
         for(int i = 0; i < numConfs; i++){
             for(int j = 0; j < numConfs; j++){
@@ -145,16 +177,19 @@ public class Season extends Conference {
             }
             for(int j = 0; j < confs[i].getNumGames(); j++){
                 // 
-                game(confs[i].searchTeam(schedule[(i*confs[i].getNumGames())+j][0]), confs[i].searchTeam(schedule[(i*confs[i].getNumGames())+j][1]));
+                match(schedule[j][0], schedule[j][1]);
             }
-            confs[i].rankedSort();
+            confs[i].sortTeams();
         }
         setRanks();
         print();
         printTop25();
     }
+
     public void read() throws NumberFormatException, IOException{
         String[] conferences = {"sec.txt","big12.txt","big10.txt","acc.txt","bigeast.txt","pac12.txt","mountaineast.txt","atlantic10.txt","americanathletic.txt","missourivalley.txt"};
+        //setNumConfs(MAX_CONFERENES);
+        setNumConfs(1);
         String filename;
         for(int i = 0; i < numConfs; i++){
             filename = conferences[i];
@@ -202,29 +237,31 @@ public class Season extends Conference {
             }
         }
     }
+
     public void print(){
         System.out.println("==================== SEASON ====================");
         for(int i = 0; i < numConfs; i++){
             confs[i].print();
         }
     }
+
     public void printRoster(){
         System.out.println("==================== SEASON ====================");
         for(int i = 0; i < numConfs; i++){
             confs[i].printRoster();
         }
     }
+
     public void printSchedule(){
         System.out.println("=================== SCHEDULE ===================");
         for(int i = 0; i < numConfs; i++){
             System.out.println("========== " + confs[i].getName() + " ==========");
             for(int j = 0; j < totGames; j++){
-                Team t1 = confs[i].searchTeam(schedule[j][0]);
-                Team t2 = confs[i].searchTeam(schedule[j][1]);
-                System.out.println(t1.getName() + " | " + t2.getName());
+                System.out.println(schedule[j][0].getName() + " | " + schedule[j][1].getName());
             }
         }
     }
+
     public void printTop25(){
         //TODO: change 8 to TOP_25 when enough teams
         System.out.println("==================== TOP 25 ===================");
