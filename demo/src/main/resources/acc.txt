@@ -1,0 +1,179 @@
+ACC
+4
+8
+North Carolina Tar Heels
+3100
+RJ Davis
+21.2
+Armando Bacot
+14.5
+Harrison Ingram
+12.2
+Cormac Ryan
+11.5
+Elliot Cadeau
+7.3
+Seth Trimble
+5.2
+Jae'Lyn Withers
+4.2
+Jalen Washington
+3.9
+Paxson Wojcik
+1.6
+Rob Landry
+1.1
+Duke Blue Devils
+3200
+Kyle Filipowski
+16.4
+Jared McCain
+14.3
+Jeremy Roach
+14.0
+Mark Mitchell
+11.6
+Tyrese Proctor
+10.5
+Caleb Foster
+7.7
+Ryan Young
+2.8
+Sean Stewart
+2.6
+TJ Power
+2.1
+Jaylen Blakes
+1.8
+Virginia Cavaliers
+3300
+Reece Beekman
+14.3
+Isaac McKneely
+12.3
+Ryan Dunn
+8.1
+Jacob Groves
+7.4
+Jordan Minor
+4.3
+Andrew Rohde
+4.3
+Leon Bond III
+4.1
+Blake Buchanan
+3.4
+Elijah Gertrude
+3.4
+Taine Murray
+3.3
+Pittsburgh Panthers
+3400
+Blake Hinson
+18.5
+Bub Carrington
+13.8
+Ishmael Leggett
+12.3
+Jaland Lowe
+9.6
+Guillermo Diaz Graham
+6.7
+Zack Austin
+6.5
+Federiko Federiko
+4.7
+Jorge Diaz Graham
+3.5
+Michael Hueitt Jr.
+3.2
+William Jeffress
+1.6
+Clemson Tigers
+3500
+PJ Hall
+18.3
+Joseph Girard III
+15.1
+Chase Hunter
+12.9
+Ian Schieffelin
+10.1
+RJ Godfrey
+6.1
+Chauncey Wiggins
+5.4
+Alex Hemenway
+5.2
+Jack Clark
+4.7
+Josh Beadle
+3.0
+Dillon Hunter
+2.3
+Syracuse Orange
+3600
+Judah Mintz
+18.8
+JJ Starling
+13.3
+Chris Bell
+12.0
+Quadir Copeland
+9.6
+Maliq Brown
+9.5
+Benny Williams
+5.4
+Justin Taylor
+5.0
+Naheem McLeod
+3.9
+Kyle Cuffe Jr.
+3.2
+Niko Ruffin
+1.5
+Wake Forest Demon Deacons
+3700
+Hunter Sallis
+18.0
+Kevin Miller
+15.6
+Cameron Hildreth
+13.8
+Andrew Carr
+13.5
+Efton Reid III
+9.6
+Damari Monsanto
+5.1
+Parker Friedrichsen
+5.1
+Matthew Marsh
+1.7
+Zach Keller
+1.6
+Marqus Marion
+1.1
+Virginia Tech Hokies
+3800
+Sean Pedulla
+16.4
+Hunter Cattoor
+13.5
+Lynn Kidd
+13.2
+Tyler Nickel
+8.8
+MJ Collins
+7.4
+Mylyjael Poteat
+6.4
+Robbie Beran
+5.6
+Mekhi Long
+3.7
+John Camden
+1.9
+Jaydon Young
+1.8
