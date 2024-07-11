@@ -1,0 +1,179 @@
+BIG 10
+2
+8
+Purdue Boilermakers
+1100
+Zach Edey
+25.2
+Braden Smith
+12.0
+Lance Jones
+11.7
+Fletcher Loyer
+10.3
+Mason Gillis
+6.5
+Trey Kaufman-Renn
+6.4
+Myles Colvin
+3.3
+Camden Heide
+3.3
+Will Berg
+2.6
+Caleb Furst
+2.2
+Illinois Fighting Illini
+1200
+Terrence Shannon Jr.
+23.0
+Marcus Domask
+15.9
+Coleman Hawkins
+12.1
+Quincy Guerrier
+9.6
+Ty Rodgers
+6.2
+Dain Dainja
+6.1
+Luke Goode
+5.7
+Justin Harmon
+5.6
+Amani Hansberry
+2.4
+Dra Gibbs-Lawhorn
+2.4
+Nebraska Cornhuskers
+1300
+Keisei Tominaga
+15.1
+Brice Williams
+13.4
+Rienk Mast
+12.3
+Juwan Gary
+11.6
+C.J. Wilcher
+7.7
+Josiah Allick
+7.3
+Jamarques Lawrence
+6.9
+Eli Rice
+4.2
+Sam Hoiberg
+3.4
+Jarron Coleman
+2.4
+Northwestern Wildcats
+1400
+Boo Buie
+19.0
+Brooks Barnhizer
+14.6
+Ryan Langborg
+12.7
+Ty Berry
+11.6
+Nick Martinelli
+8.8
+Matthew Nicholson
+5.3
+Luke Hunger
+3.8
+Blake Smith
+2.4
+Blake Preston
+2.1
+Justin Mullins
+0.4
+Wisconsin Badgers
+1500
+AJ Storr
+16.8
+Steven Crowl
+11.2
+Tyler Wahl
+10.6
+Max Klesmit
+9.9
+Chucky Hepburn
+9.2
+John Blackwell
+8.0
+Connor Essegian
+3.2
+Nolan Winter
+2.4
+Kamari McGee
+2.1
+Carter Gilmore
+1.8
+Indiana Hoosiers
+1600
+Kel'el Ware
+15.9
+Malik Reneau
+15.4
+Mackenzie Mgbako
+12.2
+Trey Galloway
+10.6
+Xavier Johnson
+7.6
+Anthony Walker
+5.1
+CJ Gunn
+3.9
+Gabe Cupps
+2.6
+Kaleb Banks
+2.6
+Anthony Leal
+2.4
+Michigan State Spartans
+1700
+Tyson Walker
+18.4
+Malik Hall
+12.7
+A.J. Hoggard
+10.7
+Jaden Akins
+10.4
+Tre Holloman
+5.7
+Xavier Booker
+3.7
+Jeremy Fears Jr.
+3.5
+Carson Cooper
+3.4
+Mady Sissoko
+3.3
+Coen Carr
+3.1
+Iowa Hawkeyes
+1800
+Payton Sandfort
+16.4
+Tony Perkins
+14.0
+Ben Krikke
+13.8
+Owen Freeman
+10.6
+Josh Dix
+8.9
+Patrick McCaffery
+8.9
+Dasonte Bowen
+4.4
+Brock Harding
+3.4
+Pryce Sandfort
+2.3
+Ladji Dembele
+2.2
