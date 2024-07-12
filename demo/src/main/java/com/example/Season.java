@@ -11,8 +11,10 @@ public class Season extends Conference {
     static final int MAX_TEAMS_MATCH = 2;
     static final int MAX_GAMES = 16;
     static final int TOP_25 = 25;
+    static final int MAX_RANKED_TEAMS = 128;
     private int numConfs;
     private int totGames;
+    private int totTeams;
     private Conference[] confs;
     protected Team[] ranked;
     private Team[][] schedule;
@@ -23,10 +25,11 @@ public class Season extends Conference {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Season(){
         confs = new Conference[MAX_CONFERENES];
-        ranked = new Team[TOP_25];
+        ranked = new Team[MAX_RANKED_TEAMS];
         schedule = new Team[MAX_GAMES*MAX_CONFERENES*MAX_TEAMS][MAX_TEAMS_MATCH];
         numConfs = 0;
         totGames = 0;
+        totTeams = 0;
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     // Functions: sets
@@ -39,6 +42,9 @@ public class Season extends Conference {
     public void setTotGames(int newNum){
         totGames = newNum;
     }
+    public void setTotTeams(int newNum){
+        totTeams = newNum;
+    }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     // Functions: gets
     // Date: 7/3/24
@@ -46,6 +52,7 @@ public class Season extends Conference {
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     public int getNumConfs(){return numConfs;}
     public int getTotGames(){return totGames;}
+    public int getTotTeams(){return totTeams;}
 
     public Conference searchConference_byIndex(int idx){
         if(idx < 0 || idx > MAX_CONFERENES){
@@ -133,8 +140,7 @@ public class Season extends Conference {
         return winner;
     }
 
-    public void setRanks(){
-        int totTeams = 0;
+    public void seasonStanding(){
         //get teams
         for(int i = 0; i < numConfs; i++){
             for(int j = 0; j < confs[i].getNumTeams(); j++){
@@ -177,11 +183,11 @@ public class Season extends Conference {
             }
             for(int j = 0; j < confs[i].getNumGames(); j++){
                 // 
-                match(schedule[j][0], schedule[j][1]);
+                match(schedule[j+(i*confs[i].getNumGames())][0], schedule[j+(i*confs[i].getNumGames())][1]);
             }
             confs[i].sortTeams();
         }
-        setRanks();
+        seasonStanding();
         print();
         printTop25();
     }
