@@ -34,7 +34,7 @@ public class Tournament extends Season {
     public int getNumEntries(){return numEntries;}
     public void getEntries(Season s){
         //change 8 to MAX_TOURNAMENT_TEAMS
-        for(int i = 0; i < 8; i++){
+        for(int i = 0; i < s.getTotTeams(); i++){
             entries[i] = s.ranked[i];
             entries[i].setRank_in_tourn(i+1);
             numEntries++;
@@ -44,12 +44,56 @@ public class Tournament extends Season {
         int currGame = 0;
         for(int j = 0; j < numEntries; j++){
             bracket[currGame][0] = entries[j];
-            bracket[currGame][1] = entries[numEntries-j -1];
+            bracket[currGame][1] = entries[numEntries - j -1];
             currGame++;
             if(currGame == numGames){
                 break;
             }
         }
+        sortBracket(numGames);
+        
+    }
+    public void sortBracket(int numGames){
+        Team[][] tempBracket = bracket;
+        Team[][] newBracket = new Team[MAX_ROUND_ONE_GAMES][2];
+        for(int i=0; i < numGames; i++){
+            int max = -1000000;
+            int maxidx = 0;
+            int min = 1000000;
+            int minidx = 0;
+            for(int j = 0; j < numGames-i; j++){
+                int diff = getSeedDiff(tempBracket[j][0], tempBracket[j][1]);
+                if(diff > max){
+                    max = diff;
+                    maxidx = j;
+                }
+                if(diff < min){
+                    min = diff;
+                    minidx = j;
+                }
+            }
+            newBracket[i][0] = tempBracket[maxidx][0];
+            newBracket[i][1] = tempBracket[maxidx][1];
+            newBracket[i+1][0] = tempBracket[minidx][0];
+            newBracket[i+1][1] = tempBracket[minidx][1];
+            i++;
+            Team[][] remainingBracket = new Team[MAX_ROUND_ONE_GAMES][2];
+            for(int j=0, k=0;j<numGames;j++){
+                if(j!=maxidx && j != minidx){
+                    remainingBracket[k][0]=tempBracket[j][0];
+                    remainingBracket[k][1]=tempBracket[j][1];
+                    k++;
+                }
+            }
+            tempBracket = remainingBracket;
+
+        }
+        bracket = newBracket;
+    }
+    public int getSeedDiff(Team t1, Team t2){
+        int diff = 0;
+        diff = t2.getRank_in_ncaa() - t1.getRank_in_ncaa();
+        return diff;
     }
     public void updateBracket(int numGames, Team[] winners){
         Team[][] updatedBracket = new Team[numGames][2];
@@ -62,7 +106,7 @@ public class Tournament extends Season {
         bracket = updatedBracket;
     }
     
-    public void printBracket(int numGames)throws InterruptedException{
+    public void printBracket(int numGames, Season s)throws InterruptedException{
         System.out.println();
         System.out.println("========== OFFICAL BRACKET ==========");
         if(numGames == 1){
@@ -71,11 +115,32 @@ public class Tournament extends Season {
         else{
             System.out.println("ROUND OF " + (numGames*2));  
         }
+        
         for(int i = 0; i < numGames; i++){
+
             System.out.println("GAME " + (i+1) +": " );
-            System.out.println(bracket[i][0].getRank_in_tourn() + " " + bracket[i][0].getName());
+            int rankT1 = bracket[i][0].getRank_in_tourn();
+            /*
+            if(s.getTotTeams() > 16 && rankT1 % (s.getTotTeams()/16) ==0){
+                rankT1 = rankT1 / (s.getTotTeams()/16);
+            }
+            else if(s.getTotTeams() > 16 && rankT1 % (s.getTotTeams()/16) ==0){
+                rankT1 = (rankT1 / (s.getTotTeams()/16)) + 1;
+            }
+            */
+            System.out.println(rankT1 + " " + bracket[i][0].getName());
+
             System.out.println("-------------------------------------");
-            System.out.println(bracket[i][1].getRank_in_tourn() + " " + bracket[i][1].getName());
+            int rankT2 = bracket[i][1].getRank_in_tourn();
+            /*
+            if(s.getTotTeams() > 16 && rankT2 % (s.getTotTeams()/16) ==0){
+                rankT2 = rankT2 / (s.getTotTeams()/16);
+            }
+            else if(s.getTotTeams() > 16 && rankT2 % (s.getTotTeams()/16) ==0){
+                rankT2 = (rankT2 / (s.getTotTeams()/16)) + 1;
+            }
+            */
+            System.out.println(rankT2 + " " + bracket[i][1].getName());
             System.out.println("-------------------------------------");
             System.out.println();
         }
@@ -92,7 +157,7 @@ public class Tournament extends Season {
         numGames = numGames/2;
         if(numGames != 0){
             updateBracket(numGames, winners);
-            printBracket(numGames);
+            printBracket(numGames, s);
             round(numGames, s);
         }
         else{
@@ -101,18 +166,19 @@ public class Tournament extends Season {
         }
     }
     
-    public void playTournamnet(int numTeams, Season s) throws InterruptedException{
+    public void playTournamnet(Season s) throws InterruptedException{
+
         getEntries(s);
         printEntries();
         int numGames = 0;
-        if(numTeams % 2 == 0){
-            numGames = numTeams/2;
+        if(s.getTotTeams() % 2 == 0){
+            numGames = s.getTotTeams()/2;
         }
         else{
-            numGames = numTeams/2 + 1;
+            numGames = s.getTotTeams()/2 + 1;
         }
         createBracket(numGames);
-        printBracket(numGames);
+        printBracket(numGames, s);
         round(numGames, s);
     }
     // Might delete
