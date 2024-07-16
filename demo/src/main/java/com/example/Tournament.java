@@ -61,24 +61,6 @@ public class Tournament extends Season {
         sortBracket(numGames);
         
     }
-    public int sortRoundOne(Team[][] tempBracket, int idx){
-        int diff = getSeedDiff(tempBracket[idx][0], tempBracket[idx][1]);
-        return diff;
-    }
-    public int sortRoundTwo(Team[][] tempBracket, int idx){
-        int diff = getSeedDiff(tempBracket[idx][0], tempBracket[idx][1]) - getSeedDiff(tempBracket[idx+1][0], tempBracket[idx+1][1]);
-        return diff;
-    }
-    public int sortRoundThree(Team[][] tempBracket, int idx){
-        int diff = (getSeedDiff(tempBracket[idx][0], tempBracket[idx][1]) - getSeedDiff(tempBracket[idx+1][0], tempBracket[idx+1][1])) 
-                    - (getSeedDiff(tempBracket[idx+2][0], tempBracket[idx+2][1]) - getSeedDiff(tempBracket[idx+3][0], tempBracket[idx+3][1]));
-        return diff;
-    }
-    public int sortRoundFour(Team[][] tempBracket, int idx){
-        int diff = ((getSeedDiff(tempBracket[idx][0], tempBracket[idx][1]) - getSeedDiff(tempBracket[idx+1][0], tempBracket[idx+1][1])) - (getSeedDiff(tempBracket[idx+2][0], tempBracket[idx+2][1]) - getSeedDiff(tempBracket[idx+3][0], tempBracket[idx+3][1])))
-                    - ((getSeedDiff(tempBracket[idx+4][0], tempBracket[idx+4][1]) - getSeedDiff(tempBracket[idx+5][0], tempBracket[idx+5][1])) - (getSeedDiff(tempBracket[idx+6][0], tempBracket[idx+6][1]) - getSeedDiff(tempBracket[idx+7][0], tempBracket[idx+7][1])));
-        return diff;
-    }
 
     // TODO: Update to work on more than 8 teams: 16,32,64
     // Make it so it sorts for x times baed on number of teams, doubling the number of teams/games being used to get the seed diff each time
@@ -285,29 +267,25 @@ public class Tournament extends Season {
         }
         
         for(int i = 0; i < numGames; i++){
-
             System.out.println("GAME " + (i+1) +": " );
             int rankT1 = bracket[i][0].getRank_in_tourn();
-            
-            if(s.getTotTeams() > 16 && rankT1 % 2 ==0){
-                rankT1 = rankT1 / (s.getTotTeams()/16);
+            // display ranks to be divided into regions of 16, 2 for 32, 4 for 64
+            if(numEntries > 16 && rankT1 % (numEntries/16) ==0){
+                rankT1 = rankT1 / (numEntries/16);
             }
-            else if(s.getTotTeams() > 16 && rankT1 % 2 !=0){
-                rankT1 = (rankT1 / (s.getTotTeams()/16)) + 1;
+            else if(numEntries > 16 && rankT1 % (numEntries/16) !=0){
+                rankT1 = (rankT1 / (numEntries/16)) + 1;
             }
-            
             System.out.println(rankT1 + " " + bracket[i][0].getName());
-
             System.out.println("-------------------------------------");
             int rankT2 = bracket[i][1].getRank_in_tourn();
-            
-            if(s.getTotTeams() > 16 && rankT2 % 2 ==0){
-                rankT2 = rankT2 / (s.getTotTeams()/16);
+            // display ranks to be divided into regions of 16, 2 for 32, 4 for 64
+            if(numEntries > 16 && rankT2 % (numEntries/16) ==0){
+                rankT2 = rankT2 / (numEntries/16);
             }
-            else if(s.getTotTeams() > 16 && rankT2 % 2 !=0){
-                rankT2 = (rankT2 / (s.getTotTeams()/16)) + 1;
+            else if(numEntries > 16 && rankT2 % (numEntries/16) !=0){
+                rankT2 = (rankT2 / (numEntries/16)) + 1;
             }
-            
             System.out.println(rankT2 + " " + bracket[i][1].getName());
             System.out.println("-------------------------------------");
             System.out.println();
