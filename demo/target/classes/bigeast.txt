@@ -1,0 +1,179 @@
+BIG EAST
+5
+8
+UCONN Huskies
+4100
+Tristen Newton
+15.1
+Cam Spencer
+14.3
+Alex Karaban
+13.3
+Donovan Clingan
+13.0
+Stephon Castle
+11.1
+Hassan Diarra
+6.1
+Samson Johnson
+5.4
+Solomon Ball
+3.3
+Jaylin Stewart
+2.5
+Apostolos Roumoglou
+1.0
+Marquette Golden Eagles
+4200
+Kam Jones
+17.2
+Tyler Kolek
+15.3
+Oso Ighodaro
+13.4
+David Joplin
+10.8
+Stevie Mitchell
+8.8
+Chase Ross
+6.1
+Sean Jones
+5.8
+Ben Gold
+5.0
+Tre Norman
+2.0
+Zaide Lowery
+1.6
+Creighton BlueJays
+4300
+Baylor Scheierman
+18.5
+Trey Alexander
+17.6
+Ryan Kalkbrenner
+17.3
+Steven Ashworth
+11.1
+Mason Miller
+5.6
+Francisco Farabello
+3.8
+Isaac Traudt
+2.9
+Fredrick King
+2.6
+Jasen Green
+1.6
+Josiah Dotzler
+1.3
+Seton Hall Pirates
+4400
+Kadary Richmond
+15.7
+Al-Amir Dawes
+15.0
+Dre Davis
+15.0
+Dylan Addae-Wusu
+8.6
+Jaden Bediako
+8.1
+Isaiah Coleman
+5.4
+Elijah Hutchins-Everett
+3.5
+Jaquan Sanders
+2.7
+Malachi Brown
+1.3
+Sadraque NgaNga
+1.1
+St. John's Red Storm
+4500
+Daniss Jenkins
+14.9
+Joel Soriano
+13.8
+Jordan Dingle
+11.6
+RJ Luis Jr.
+10.9
+Chris Ledlum
+9.5
+Nahiem Alleyne
+6.4
+Glenn Taylor Jr.
+4.4
+Zuby Ejiofor
+4.3
+Brady Dunlap
+3.2
+Simeon Wilcher
+2.8
+Providence Friars
+4600
+Devin Carter
+19.7
+Josh Oduro
+15.9
+Bryce Hopkins
+15.5
+Jayden Pierre
+9.5
+Ticket Gaines
+8.5
+Corey Floyd Jr.
+4.8
+Rich Barron
+4.4
+Garwey Dual
+3.3
+Rafael Castro
+2.9
+Donovan Santoro
+0.6
+Villanova
+4700
+Eric Dixon
+16.6
+TJ Bamba
+10.1
+Justin Moore
+9.8
+Mark Armstrong
+8.4
+Tyler Burton
+7.5
+Jordan Longino
+6.6
+Hakim Hart
+6.3
+Brendan Hausen
+6.2
+Lance Ware
+1.2
+Nnanna Njoku
+0.8
+Butler Bulldogs
+4800
+Pierre Brooks
+14.8
+Jahmyl Telfort
+13.9
+DJ Davis
+13.5
+Posh Alexander
+11.3
+Jalen Thomas
+7.7
+Andre Screen
+5.2
+Finley Bizjack
+4.2
+Connor Turnbull
+4.1
+Landon Moore
+3.8
+Boden Kapke
+2.0
