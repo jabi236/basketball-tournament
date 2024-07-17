@@ -52,18 +52,19 @@ public class Player {
     public int getPoints(){
         numGames++;
         int pts = 0;
-        // get random number between min and max to be added as standard devation of ppg
+        // get random number between min and max to be added as standard devation of player's ppg
         int min = -3;
         int max = 3;
         Random r = new Random();
         double std = r.nextDouble(max -min) + min;
-
         pts = (int)(ppg + std);
+        // update total points to update ppg
         totPts = totPts + pts;
-
+        // a player can't score negative points
         if(pts < 0){
             pts = 0;
         }
+        // update ppg acording to generated points
         if(numGames == 1){
             ppg = pts;
         }
