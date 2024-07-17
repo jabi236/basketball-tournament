@@ -90,10 +90,11 @@ public class Conference extends Team{
                 }
             }
         }
+        // set team's conference rank accordiong to index after sort
         for(int i = 0; i < numTeams; i++){
             teams[i].setRank_in_conf(i+1);
             // generate power number for each team based on the rank of their conference, their season record, their rank within the conference, and the team's total PPG
-            teams[i].setTPower((1 + (0.05 * (10 - confRank)) * ((teams[i].getRecord() * 2) + (numTeams - teams[i].getRank_in_conf()) + teams[i].getTotPPG())));
+            teams[i].setTPower((1 + (0.05 * (10 - confRank)) * ((teams[i].getRecord() * 4) + (numTeams - teams[i].getRank_in_conf()) + teams[i].getTotPPG())));
         }
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
