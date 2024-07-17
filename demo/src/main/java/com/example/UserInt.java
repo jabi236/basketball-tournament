@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class UserInt extends Menu{
     private Menu mainMenu;
+    private Menu tournyMenu;
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     // Function: constructor
     // Date: 7/5/24
@@ -17,6 +18,12 @@ public class UserInt extends Menu{
         mainMenu.addOption('S', "Simulate Regular Season");
         mainMenu.addOption('T', "Simulate Tournament");
         mainMenu.addOption('X', "Exit");
+
+        tournyMenu = new Menu();
+        tournyMenu.setTitle("SIMULATE TOURNAMENT");
+        tournyMenu.setErrorMsg("Invalid option! Try again!");
+        tournyMenu.addOption('Y', "Print infomration about season and each game");
+        tournyMenu.addOption('N', "Don't do that");
     }
     //-------------------------------------------------------------------------------------------------------------------------------------------------
     // Functions: go
@@ -29,10 +36,16 @@ public class UserInt extends Menu{
             opt = mainMenu.doMenu();
             switch(opt){
                 case 'S': Season s = new Season(); s.playSeason(); break;
-                case 'T': Season s2 = new Season(); s2.playSeason(); 
-                          Tournament t = new Tournament(); t.playTournamnet(s2); break;
+                case 'T': doTournament(); break;
                 case 'X': System.out.println("ENDING SIMULATION");
             }
         }
+    }
+
+    public void doTournament() throws IOException, InterruptedException{
+        Season s = new Season(); 
+        s.playSeason(); 
+        Tournament t = new Tournament(); 
+        t.playTournamnet(s);
     }
 }
