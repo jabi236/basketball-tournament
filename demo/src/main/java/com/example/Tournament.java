@@ -1,6 +1,6 @@
 package com.example;
 
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 public class Tournament extends Season {
     private final int MAX_TOURNAMENT_TEAMS = 64;
@@ -45,6 +45,11 @@ public class Tournament extends Season {
             numEntries++;
         }
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: create Bracket
+    // Date: 7/5/24
+    // Description: generate bracket from entries, putting the highest seeds with lower seeds
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void createBracket(int numGames){
         int currGame = 0;
         // add entries to bracket, paired up according to remaining highest seed and lowest seed (increment over start of list and backwards at the end of list)
@@ -58,14 +63,13 @@ public class Tournament extends Season {
         }
         // sort games to be in format similar to official ncca bracket. Highest and lowest seed differences play first, 
         // highest seed should be as far away from each other as possible
-        sortBracket(numGames);
-        
+        sortBracket(numGames); 
     }
-
-    // TODO: Update to work on more than 8 teams: 16,32,64
-    // Make it so it sorts for x times baed on number of teams, doubling the number of teams/games being used to get the seed diff each time
-    // loop 1; seed diff game 1(2 teams) vs game 2(2 teams); loop 2 seed diff (game 1 - game 2)(4 teams) vs (game 3 - game 4)(4 teams);
-    // 8 teams = 1 time; 16,2; 32,3; 64,4;
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: sort Bracket
+    // Date: 7/15/24
+    // Description: sort bracket to be seeded like offical ncaa bracket. Highest seeds play lower seeds, highest seeds are as far away from each other
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void sortBracket(int numGames){
         // set temp bracket to be copy of bracket
         Team[][] tempBracket = bracket;
@@ -238,13 +242,21 @@ public class Tournament extends Season {
         }
         bracket = newBracket;
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: get Seed Diff
+    // Date: 7/5/24
+    // Description: return difference between higher seed and lower seed of two teams
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public int getSeedDiff(Team t1, Team t2){
         int diff = 0;
         diff = t2.getRank_in_ncaa() - t1.getRank_in_ncaa();
         return diff;
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: update Bracket
+    // Date: 7/5/24
+    // Description: remove losers of previous round of bracket
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void updateBracket(int numGames, Team[] winners){
         Team[][] updatedBracket = new Team[numGames][2];
         int j = 0;
@@ -255,7 +267,11 @@ public class Tournament extends Season {
         }
         bracket = updatedBracket;
     }
-    
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print Bracket
+    // Date: 7/5/24
+    // Description: print entries in bracket format with seeds converted for 16 team regions
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void printBracket(int numGames, Season s)throws InterruptedException{
         System.out.println();
         System.out.println("========== OFFICAL BRACKET ==========");
@@ -292,7 +308,11 @@ public class Tournament extends Season {
         }
         //TimeUnit.SECONDS.sleep(5);
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: round
+    // Date: 7/5/24
+    // Description: simulatate match between two teams and add winner to next round
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void round(int numGames, Season s) throws InterruptedException{
         Team[] winners = new Team[numGames];
 
@@ -311,7 +331,11 @@ public class Tournament extends Season {
             System.out.println();
         }
     }
-    
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: play Tournament
+    // Date: 7/5/24
+    // Description: main function of tournament class
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void playTournamnet(Season s) throws InterruptedException{
         if((!isPowerOf2(s.getTotTeams())) && (s.getTotTeams() < 64)){
             System.out.println();
@@ -332,7 +356,12 @@ public class Tournament extends Season {
         printBracket(numGames, s);
         round(numGames, s);
     }
-    // Might delete
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print entries
+    // Date: 7/5/24
+    // Description: print all teams that qualified for the tournament
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // TODO: Might delete
     public void printEntries(){
         System.out.println("=============================== QUALIFYING TEAMS ================================");
         for(int i = 0; i < numEntries; i++){
