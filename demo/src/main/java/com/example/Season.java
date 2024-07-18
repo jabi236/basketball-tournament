@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 public class Season extends Conference {
-    static final int MAX_CONFERENES = 10;
+    static final int MAX_CONFERENES = 12;
     static final int MAX_TEAMS_MATCH = 2;
     static final int MAX_GAMES = 16;
     static final int TOP_25 = 25;
@@ -53,7 +53,11 @@ public class Season extends Conference {
     public int getNumConfs(){return numConfs;}
     public int getTotGames(){return totGames;}
     public int getTotTeams(){return totTeams;}
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: searchConference by index
+    // Date: 7/3/24
+    // Description: searches for conference by index of partial array of conference objects, if index is out of range it returns an empty conference
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Conference searchConference_byIndex(int idx){
         if(idx < 0 || idx > MAX_CONFERENES){
             Conference emptyConference = new Conference();
@@ -61,7 +65,11 @@ public class Season extends Conference {
         }
         return confs[idx];
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: searchConference by id
+    // Date: 7/3/24
+    // Description: searches for conference by id of confeence objects, if it is not found or is not in range, return an empty conference
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Conference searchConference_byId(int searchId){
         if(searchId < 0){
             Conference emptyConference = new Conference();
@@ -75,7 +83,12 @@ public class Season extends Conference {
         Conference emptyConference = new Conference();
         return emptyConference;
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: sort Schedule
+    // Date: 7/4/24
+    // Description: sort schedule so no team plays twice in the same week.
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // TODO: sort schedule
     public void sortSchedule(){
         for(int i = 0; i < numConfs; i++){
             for(int j = 0; j< confs[i].getNumGames(); j++){
@@ -85,7 +98,11 @@ public class Season extends Conference {
             }
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: create Schedule
+    // Date: 7/4/24
+    // Description: generate schedule for conference by having each team play all the other teams in the conference twice
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     // TODO: Change to make menu sorted by week. No same team twice in the same week
     public void createSchedule(){
         for(int i=0; i < numConfs; i++){
@@ -112,18 +129,25 @@ public class Season extends Conference {
             confs[i].setNumGames(confGames);
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: match
+    // Date: 7/4/24
+    // Description: simulate game played between two teams by generating a score and returning the team with the higher score
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public Team match(Team t1, Team t2) throws InterruptedException{
+        // generate scores for teams
         int score1 = t1.getScore();
         int score2 = t2.getScore();
+        // for printing ot if game goes into overtime
         String ot = "";
         Team winner = new Team();
-
+        // if teams tied, generate another quarter(game score divided by 4)
         while(score1 == score2){
             score1 = score1 + (t1.getScore()/4);
             score2 = score2 + (t2.getScore()/4);
             ot = "/OT";
         }
+        // increment wins and losses of each team based on outcome of the game
         if(score1 > score2){
             winner = t1;
             t1.addWins();
@@ -134,21 +158,26 @@ public class Season extends Conference {
             t2.addWins();
             t1.addLosses();
         }
+        // print game result
         System.out.println("FINAL" + ot + ":");
         System.out.println(t1.getName() + " " + score1 + " | " + t2.getName() + " " + score2);
         System.out.println(winner.getName() + " Wins!");
         return winner;
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: Season Standing
+    // Date: 7/4/24
+    // Description: sorts trams in list by their performance in the season/power attribute formula(tpower)
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void seasonStanding(){
-        //get teams
+        // set total teams in season
         for(int i = 0; i < numConfs; i++){
             for(int j = 0; j < confs[i].getNumTeams(); j++){
                 ranked[totTeams] = confs[i].teams[j];
                 totTeams++;
             }
         }
-        //sort
+        // sort teams based on tpower(formula to determine strength of team) from highest to lowest using bubble sort
         for(int i = 0; i < totTeams; i++){
             for(int j = 1; j < totTeams - i; j++){
                 if(ranked[j-1].getTPower() < ranked[j].getTPower()){
@@ -158,7 +187,7 @@ public class Season extends Conference {
                 }
             }
         }
-        // set ncaa ranks
+        // set ncaa/season ranks
         for(int i = 0; i < totTeams; i++){
             ranked[i].setRank_in_ncaa(i+1);
             for(int j = 0; j < numConfs; j++){
@@ -171,38 +200,53 @@ public class Season extends Conference {
             }
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: play Season
+    // Date: 7/4/24
+    // Description: main function of season class
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void playSeason() throws IOException, InterruptedException{
         read();
         createSchedule();
         //printSchedule();
         for(int i = 0; i < numConfs; i++){
+            // print conferences in season
             for(int j = 0; j < numConfs; j++){
                 confs[j].print();
                 //confs[i].printRoster();
             }
             for(int j = 0; j < confs[i].getNumGames(); j++){
-                // 
+                // generate points for two teams in a game based on the schedule
                 match(schedule[j+(i*confs[i].getNumGames())][0], schedule[j+(i*confs[i].getNumGames())][1]);
             }
             confs[i].sortTeams();
         }
+        // sort teams by tpower for ranking in season
         seasonStanding();
         print();
         printTop25();
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: read
+    // Date: 7/4/24
+    // Description: read in data for teams/players by conference
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void read() throws NumberFormatException, IOException{
-        String[] conferences = {"sec.txt","big12.txt","big10.txt","acc.txt","bigeast.txt","pac12.txt","mountaineast.txt","atlantic10.txt","americanathletic.txt","missourivalley.txt"};
+        // create array of file names of conference, team, and player data
+        // data is dived into conferences
+        String[] conferences = {"sec.txt","big12.txt","big10.txt","acc.txt","bigeast.txt","pac12.txt","mountainwest.txt","atlantic10.txt","americanathletic.txt","missourivalley.txt", "westcoast.txt", "southern.txt"};
+        // set number of conferences you wish to test, may move later
         //setNumConfs(MAX_CONFERENES);
-        setNumConfs(1);
+        setNumConfs(8); // change for how many teams you want to test
         String filename;
+        // loop through number of conference files to be read, setting attributes accordingly
         for(int i = 0; i < numConfs; i++){
             filename = conferences[i];
             ClassLoader classloader = Thread.currentThread().getContextClassLoader();
             InputStream is = classloader.getResourceAsStream(filename);
             try{
                 BufferedReader myReader = new BufferedReader(new InputStreamReader(is));
+                // read in and set conference data
                 String name;
                 int confRank;
                 int numTeams;
@@ -220,6 +264,7 @@ public class Season extends Conference {
                 String playerName;
                 double playerPPG;
                 for(int j = 0; j < numTeams; j++){
+                    //read in and set team data
                     teamName = myReader.readLine();
                     teamId = Integer.parseInt(myReader.readLine());
                     Team t = new Team();
@@ -227,6 +272,7 @@ public class Season extends Conference {
                     t.setId(teamId);
                     confs[i].teams[j] = t;
                     for(int k = 0; k < 10; k++){
+                        // read in and set player data
                         playerId = teamId + k + 1;
                         playerName = myReader.readLine();
                         playerPPG = Double.parseDouble(myReader.readLine());
@@ -243,21 +289,33 @@ public class Season extends Conference {
             }
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print
+    // Date: 7/4/24
+    // Description: invoke conference object print function for each conference in partial array
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void print(){
         System.out.println("==================== SEASON ====================");
         for(int i = 0; i < numConfs; i++){
             confs[i].print();
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print
+    // Date: 7/4/24
+    // Description: invoke conference object print roster function for each conference in partial array to also print all players
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void printRoster(){
         System.out.println("==================== SEASON ====================");
         for(int i = 0; i < numConfs; i++){
             confs[i].printRoster();
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print
+    // Date: 7/4/24
+    // Description: print team names in schedule array
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void printSchedule(){
         System.out.println("=================== SCHEDULE ===================");
         for(int i = 0; i < numConfs; i++){
@@ -267,9 +325,12 @@ public class Season extends Conference {
             }
         }
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
+    // Function: print
+    // Date: 7/4/24
+    // Description: print team in top 25 of ncaa ranks
+    //-------------------------------------------------------------------------------------------------------------------------------------------------
     public void printTop25(){
-        //TODO: change 8 to TOP_25 when enough teams
         System.out.println("==================== TOP 25 ===================");
         int nTeams = 0;
         for(int i = 0; i < numConfs; i++){
