@@ -35,7 +35,7 @@ public class Tournament extends Season {
     public Boolean isPowerOf2(int x){ return (x != 0)&&((x & (x-1))==0);}
     public void getEntries(Season s){
         // total entries is 64, unless their are less teams entering the tournament
-        int totEntries = MAX_RANKED_TEAMS;
+        int totEntries = MAX_TOURNAMENT_TEAMS;
         if(s.getTotTeams() < totEntries){
             totEntries = s.getTotTeams();
         }
@@ -346,11 +346,14 @@ public class Tournament extends Season {
         getEntries(s);
         printEntries();
         int numGames = 0;
-        if(s.getTotTeams() % 2 == 0){
+        if(s.getTotTeams() % 2 == 0 && s.getTotGames() < 64){
             numGames = s.getTotTeams()/2;
         }
-        else{
+        else if(s.getTotTeams() % 2 != 0 && s.getTotGames() < 64){
             numGames = s.getTotTeams()/2 + 1;
+        }
+        else{//totteam >=64
+            numGames = 32;
         }
         createBracket(numGames);
         printBracket(numGames, s);
