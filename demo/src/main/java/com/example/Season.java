@@ -237,7 +237,7 @@ public class Season extends Conference {
         String[] conferences = {"sec.txt","big12.txt","big10.txt","acc.txt","bigeast.txt","pac12.txt","mountainwest.txt","atlantic10.txt","americanathletic.txt","missourivalley.txt", "westcoast.txt", "southern.txt"};
         // set number of conferences you wish to test, may move later
         //setNumConfs(MAX_CONFERENES);
-        setNumConfs(8); // change for how many teams you want to test
+        setNumConfs(9); // change for how many teams you want to test
         String filename;
         // loop through number of conference files to be read, setting attributes accordingly
         for(int i = 0; i < numConfs; i++){
